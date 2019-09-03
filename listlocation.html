@@ -88,7 +88,7 @@ async function processevent(object)
         }
      } 
      if (blockobject)
-        ts = new Date(blockobject.timestamp * 1000).toString(); // javascript uses milliseconds     
+        ts = new Date(blockobject.timestamp * 1000).toISOString(); // javascript uses milliseconds     
         
      var dist=decoded['0'];
      var ensfrom=await ensReverse(from)
