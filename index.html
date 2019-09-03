@@ -63,17 +63,17 @@
         var dist=-1;
         var accounts=[];
                      
-        ProofOfLocationABI=[{"constant": false,"inputs": [{"name": "distance","type": "int256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
+        DistanceHHSABI=[{"constant": false,"inputs": [{"name": "distance","type": "int256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
              
         async function SaveOnBlockchain() {
             if (dist <  0) { log("No location yet");return;}  
             if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}                          
             DistanceHHSaddress = await web3.eth.ens.getAddress('distancehhs.eth')
             log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
-            const ProofOfLocationContract   = new web3.eth.Contract(ProofOfLocationABI, DistanceHHSaddress );
+            const ProofOfLocationContract   = new web3.eth.Contract(DistanceHHSABI, DistanceHHSaddress );
             
             log(`Storing distance to HHS: lat=${dist} (hex:${web3.utils.toHex(dist)}) `);
-            x=await ProofOfLocationContract.methods.StoreProofOfLocation(dist).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
+            x=await DistanceHHSContract.methods.StoreDistanceHHS(dist).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
             log(`Transaction hash: ${EtherscanLink("tx",x.transactionHash)}`);
         }
              
