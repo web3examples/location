@@ -101,7 +101,7 @@ async function processevent(object)
         
      var dist=decoded['0'];
      var ensfrom=await ensReverse(from)
-     log(`${ts},${from},${ensfrom},${dist}`);     
+     log(`${from},${ensfrom},${ts},${dist}`);     
 }
 
 
@@ -115,8 +115,6 @@ web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
     .on("changed", console.log)
     .on("error",console.log)    
 });
-
-
 
         </script>        
     </body>
