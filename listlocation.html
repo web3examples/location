@@ -1,5 +1,25 @@
-const Web3 = require('web3');
-var namehash = require('eth-ens-namehash')
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta charset="UTF-8">
+        <script src="../ethereum/web3js/web3-browserify.js"></script>
+        <script src="../ethereum/web3js/namehash-browserify.js"> </script>
+    </head>
+
+    <body>
+        <h1>Distance to HHS on ethereum blockchain</h1>   
+        <pre id="log" style="width:100%;height:200px"></pre>
+
+ <script type="text/javascript">
+ 
+ 
+    function log(str,...arguments) {        
+            var logstr=arguments.toString();
+            document.getElementById("log").innerHTML +=str+" "+logstr+"\n";
+        }  
+ 
+ 
 const web3 = new Web3(Web3.givenProvider || "wss://ropsten.infura.io/ws/v3/40548c5748a04570b1859a7bd8f9e615" );
 
 // https://manager.ens.domains/name/distancehhs.eth
@@ -22,7 +42,9 @@ async function ensReverse(Account) {
 var  yourAccount = '0x8e2A89fF2F45ed7f8C8506f846200D671e2f176f';
 ensReverse(yourAccount).then ((name) => console.log("Reverse of %s is %s",yourAccount,name));
 
-const sleep = require('util').promisify(setTimeout);
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // https://www.geodatasource.com/developers/javascript
 function distance(lat1, lon1, lat2, lon2) {
@@ -51,9 +73,9 @@ function distance(lat1, lon1, lat2, lon2) {
 
 async function processevent(object)
 {     
-     var ts=0
+     var ts='';
      var decoded=web3.eth.abi.decodeParameters(['uint256'], object.data);    
-     console.log("Found block with transaction %s",object.blockNumber);
+     //console.log("Found block with transaction %s",object.blockNumber);
      
      var txHash=object.transactionHash;     
      const trx = await web3.eth.getTransaction(txHash);
@@ -66,15 +88,15 @@ async function processevent(object)
         }
      } 
      if (blockobject)
-        ts = new Date(blockobject.timestamp * 1000); // javascript uses milliseconds     
+        ts = new Date(blockobject.timestamp * 1000).toString(); // javascript uses milliseconds     
         
      var dist=decoded['0'];
-     console.log("%s From %s d=%s meters",ts,from,await ensReverse(from),dist);     
+     log("%s From %s (%s) d=%s meters",ts,from,await ensReverse(from),dist);     
 }
 
 var subscription;
 web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
-    console.log("Found contract address: %s",address);
+    //console.log("Found contract address: %s",address);
     subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
     .on("changed", console.log)
@@ -83,21 +105,10 @@ web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
 
 
 
+        </script>        
+    </body>
+</html>
 
 
-
-
-console.log('Press key & enter to exit');
-process.stdin.setRawMode=true
-process.stdin.resume();
-process.stdin.on('data', () =>
-{ 
-   console.log('Unsubscribing..');
-   subscription.unsubscribe(function(error, success){
-   if(success)
-        console.log('Successfully unsubscribed!');
-    process.exit(0);
-   });
-});
 
 
