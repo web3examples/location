@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <h1>Distance to HHS on ethereum blockchain</h1>   
+        <h1>List of checkins to locations relative to HHS</h1>   
         <pre id="log" style="width:100%;height:200px"></pre>
 
  <script type="text/javascript">
@@ -91,7 +91,8 @@ async function processevent(object)
         ts = new Date(blockobject.timestamp * 1000).toString(); // javascript uses milliseconds     
         
      var dist=decoded['0'];
-     log("%s From %s (%s) d=%s meters",ts,from,await ensReverse(from),dist);     
+     var ensfrom=await ensReverse(from)
+     log(`%{ts},${from},${ensfrom},${dist}`);     
 }
 
 var subscription;
