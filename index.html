@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <h1>Proof of location on ethereum blockchain</h1>   
+        <h1>Distance to HHS on ethereum blockchain</h1>   
         
         <button onclick="SaveLocation()">Press here to determine location</button><br>  <!-- needs user interaction for geolocation to work -->      
         <div id="map" style="width:100%;height:200px" ></div> 
@@ -70,7 +70,7 @@
             if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}                          
             DistanceHHSaddress = await web3.eth.ens.getAddress('distancehhs.eth')
             log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
-            const ProofOfLocationContract   = new web3.eth.Contract(DistanceHHSABI, DistanceHHSaddress );
+            const DistanceHHSContract   = new web3.eth.Contract(DistanceHHSABI, DistanceHHSaddress );
             
             log(`Storing distance to HHS: lat=${dist} (hex:${web3.utils.toHex(dist)}) `);
             x=await DistanceHHSContract.methods.StoreDistanceHHS(dist).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
