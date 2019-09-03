@@ -63,6 +63,11 @@
                      
         DistanceHHSABI=[{"constant": false,"inputs": [{"name": "distance","type": "uint256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
              
+             
+             
+
+             
+             
         async function SaveOnBlockchain() {
             if (dist <  0) { log("No location yet");return;}  
             if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}                          
@@ -116,8 +121,11 @@
                 { log("Please select Ropsten test network");return;}
             log("Ethereum network: Ropsten")
             accounts=await web3.eth.getAccounts();            
-            log(`Ethereum address: ${EtherscanLink("address",accounts[0])}`);
-            web3.transactionConfirmationBlocks = 1; // default 24
+            log(`Ethereum address: ${EtherscanLink("address",)}`);
+                        
+            log('http://web3examples.com/location/listlocation.html?address=${accounts[0]}');
+            
+            
        }
        window.addEventListener('load', asyncloaded);       
         </script>        
