@@ -81,11 +81,12 @@ log('From (address), From (name), Date-time, Distance (meters)');
 log(web3.version);
 var subscription;
 web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
-    console.log(`Found contract address: ${address}`);
+    log(`Found contract address: ${address}`);
     subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
-    .on("changed", console.log)
-    .on("error",console.log)    
+    .on("changed", log)
+    .on("error",log)
+    .catch(log);    
 }).catch(log);
 
         </script>        
