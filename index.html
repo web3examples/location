@@ -103,8 +103,8 @@
        }
              
         async function asyncloaded() {
-        console.log(ethereum)
-        console.log(typeof ethereum)
+        //console.log(ethereum)
+        //console.log(typeof ethereum)
             if (typeof ethereum !== 'undefined')
                 await ethereum.enable().catch( (reason) => log('User rejected provider access',reason.message.substring(0,50)) )
             if (!Web3.givenProvider) { // Checking if web3 is accessible
