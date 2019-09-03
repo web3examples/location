@@ -86,7 +86,7 @@ web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
     .on("data", processevent )
     .on("changed", console.log)
     .on("error",console.log)    
-});
+}).catch(log);
 
         </script>        
     </body>
