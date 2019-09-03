@@ -48,6 +48,18 @@ Checkin on a location
 
 # Check who has checked in
 
-* [https://web3examples.com/location/listlocation.html](*https://web3examples.com/location/listlocation.html)
+* [List](*https://web3examples.com/location/listlocation.html)
+
+
+# Internals
+
+The application calculates the distance from the center of the [Haagse Hogeschool](https://www.google.com/maps/search/?api=1&query=52.0672,4.3245) in meters. 
+It saves this info on the Ethereum blockchain, on the Ropsten test network.
+
+
+# Known issues
+
+* No mobile browser for IOS has been tested/found yet
+* The list of check ins doesn't work in Opera (neither mobile nor the opera browser on a PC)
 
 
