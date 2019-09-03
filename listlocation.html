@@ -21,7 +21,7 @@
  
 var url = new URL(window.location.href);
 var matchaddress = url.searchParams.get("address");
-log(matchaddress);
+if (matchaddress) log(`Only showing address: ${matchaddress}`);
  
 
 
@@ -53,7 +53,7 @@ async function processevent(object)
 {     
      var ts='';
      var decoded=web3.eth.abi.decodeParameters(['uint256'], object.data);    
-     log(`Found block with transaction ${object.blockNumber}`);
+     //log(`Found block with transaction ${object.blockNumber}`);
      
      var txHash=object.transactionHash;     
      const trx = await web3.eth.getTransaction(txHash);
@@ -78,7 +78,7 @@ async function processevent(object)
 
 
 log('From (address), From (name), Date-time, Distance (meters)');
-log(web3.version);
+//log(web3.version);
 
 
 async function f() {
