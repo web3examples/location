@@ -7,7 +7,7 @@
         {
           "indexed": false,
           "name": "distance",
-          "type": "int256"
+          "type": "uint256"
         }
       ],
       "name": "DistanceHHSLog",
@@ -18,7 +18,7 @@
       "inputs": [
         {
           "name": "distance",
-          "type": "int256"
+          "type": "uint256"
         }
       ],
       "name": "StoreDistanceHHS",
@@ -28,12 +28,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"distance\",\"type\":\"int256\"}],\"name\":\"StoreDistanceHHS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"distance\",\"type\":\"int256\"}],\"name\":\"DistanceHHSLog\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol\":\"DistanceHHS\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol\":{\"keccak256\":\"0x1186be3baf0b4bd8117257ca4aaa5a12c5de0cc7d4b5b0bdf8f3e639ce2d381d\",\"urls\":[\"bzzr://cb0977ec682075a4cb04a5a7f8d9bfbb54c574d15af6ec87e5fedf5e26e3480f\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b5060be8061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063c4a896cd14602d575b600080fd5b605660048036036020811015604157600080fd5b81019080803590602001909291905050506058565b005b7f93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092816040518082815260200191505060405180910390a15056fea165627a7a723058203dcc13a22c13b1a65713bf2500e07d38690554476c1fa4f14d5c7047e12e3fdb0029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063c4a896cd14602d575b600080fd5b605660048036036020811015604157600080fd5b81019080803590602001909291905050506058565b005b7f93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092816040518082815260200191505060405180910390a15056fea165627a7a723058203dcc13a22c13b1a65713bf2500e07d38690554476c1fa4f14d5c7047e12e3fdb0029",
-  "sourceMap": "27:209:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:209:0;;;;;;;",
-  "deployedSourceMap": "27:209:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:209:0;;;;;;;;;;;;;;;;;;;122:111;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;122:111:0;;;;;;;;;;;;;;;;;:::i;:::-;;;186:24;201:8;186:24;;;;;;;;;;;;;;;;;;122:111;:::o",
-  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract DistanceHHS {\r\n   event DistanceHHSLog(int256 distance)  ;   // declaring event  \r\n   function StoreDistanceHHS(int256 distance) public {\r\n      emit DistanceHHSLog(distance);// logging event\r\n   }\r\n}\r\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"distance\",\"type\":\"uint256\"}],\"name\":\"StoreDistanceHHS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"distance\",\"type\":\"uint256\"}],\"name\":\"DistanceHHSLog\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol\":\"DistanceHHS\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol\":{\"keccak256\":\"0x3f9a88cdec9bee80e58e23f56b0058d5d6d19fef2aa85ab0b337d555ff524841\",\"urls\":[\"bzzr://f542c28f6ae6a8c80eafd9c62198b92630fcc2bfa0220acf7b92dd72757b1ed8\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060be8061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80630bcd07fe14602d575b600080fd5b605660048036036020811015604157600080fd5b81019080803590602001909291905050506058565b005b7f3fc9c413ae187dd1ef39f09e5c228240f43666938ce9159467d8545c0099effa816040518082815260200191505060405180910390a15056fea165627a7a72305820f68b9055fc47bde2398440726cdd0aad5f7c63ec7103668b0a9f2b5e7878cce90029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80630bcd07fe14602d575b600080fd5b605660048036036020811015604157600080fd5b81019080803590602001909291905050506058565b005b7f3fc9c413ae187dd1ef39f09e5c228240f43666938ce9159467d8545c0099effa816040518082815260200191505060405180910390a15056fea165627a7a72305820f68b9055fc47bde2398440726cdd0aad5f7c63ec7103668b0a9f2b5e7878cce90029",
+  "sourceMap": "27:211:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:211:0;;;;;;;",
+  "deployedSourceMap": "27:211:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:211:0;;;;;;;;;;;;;;;;;;;123:112;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;123:112:0;;;;;;;;;;;;;;;;;:::i;:::-;;;188:24;203:8;188:24;;;;;;;;;;;;;;;;;;123:112;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract DistanceHHS {\r\n   event DistanceHHSLog(uint256 distance)  ;   // declaring event  \r\n   function StoreDistanceHHS(uint256 distance) public {\r\n      emit DistanceHHSLog(distance);// logging event\r\n   }\r\n}\r\n",
   "sourcePath": "C:/blockchain_test/location/truffle/contracts/DistanceHHS.sol",
   "ast": {
     "absolutePath": "/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol",
@@ -86,36 +86,36 @@
                   "name": "distance",
                   "nodeType": "VariableDeclaration",
                   "scope": 5,
-                  "src": "75:15:0",
+                  "src": "75:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_int256",
-                    "typeString": "int256"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 2,
-                    "name": "int256",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "75:6:0",
+                    "src": "75:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_int256",
-                      "typeString": "int256"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "74:17:0"
+              "src": "74:18:0"
             },
-            "src": "54:40:0"
+            "src": "54:41:0"
           },
           {
             "body": {
               "id": 14,
               "nodeType": "Block",
-              "src": "172:61:0",
+              "src": "174:61:0",
               "statements": [
                 {
                   "eventCall": {
@@ -128,18 +128,18 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 7,
-                        "src": "201:8:0",
+                        "src": "203:8:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_int256",
-                          "typeString": "int256"
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
                         }
                       }
                     ],
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_int256",
-                          "typeString": "int256"
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
                         }
                       ],
                       "id": 10,
@@ -147,10 +147,10 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 5,
-                      "src": "186:14:0",
+                      "src": "188:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_int256_$returns$__$",
-                        "typeString": "function (int256)"
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
                       }
                     },
                     "id": 12,
@@ -161,7 +161,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "186:24:0",
+                    "src": "188:24:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -169,7 +169,7 @@
                   },
                   "id": 13,
                   "nodeType": "EmitStatement",
-                  "src": "181:29:0"
+                  "src": "183:29:0"
                 }
               ]
             },
@@ -190,47 +190,47 @@
                   "name": "distance",
                   "nodeType": "VariableDeclaration",
                   "scope": 15,
-                  "src": "148:15:0",
+                  "src": "149:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_int256",
-                    "typeString": "int256"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 6,
-                    "name": "int256",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "148:6:0",
+                    "src": "149:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_int256",
-                      "typeString": "int256"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "147:17:0"
+              "src": "148:18:0"
             },
             "returnParameters": {
               "id": 9,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "172:0:0"
+              "src": "174:0:0"
             },
             "scope": 16,
-            "src": "122:111:0",
+            "src": "123:112:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17,
-        "src": "27:209:0"
+        "src": "27:211:0"
       }
     ],
-    "src": "0:238:0"
+    "src": "0:240:0"
   },
   "legacyAST": {
     "absolutePath": "/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol",
@@ -283,36 +283,36 @@
                   "name": "distance",
                   "nodeType": "VariableDeclaration",
                   "scope": 5,
-                  "src": "75:15:0",
+                  "src": "75:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_int256",
-                    "typeString": "int256"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 2,
-                    "name": "int256",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "75:6:0",
+                    "src": "75:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_int256",
-                      "typeString": "int256"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "74:17:0"
+              "src": "74:18:0"
             },
-            "src": "54:40:0"
+            "src": "54:41:0"
           },
           {
             "body": {
               "id": 14,
               "nodeType": "Block",
-              "src": "172:61:0",
+              "src": "174:61:0",
               "statements": [
                 {
                   "eventCall": {
@@ -325,18 +325,18 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 7,
-                        "src": "201:8:0",
+                        "src": "203:8:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_int256",
-                          "typeString": "int256"
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
                         }
                       }
                     ],
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_int256",
-                          "typeString": "int256"
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
                         }
                       ],
                       "id": 10,
@@ -344,10 +344,10 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 5,
-                      "src": "186:14:0",
+                      "src": "188:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_int256_$returns$__$",
-                        "typeString": "function (int256)"
+                        "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
                       }
                     },
                     "id": 12,
@@ -358,7 +358,7 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "186:24:0",
+                    "src": "188:24:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
@@ -366,7 +366,7 @@
                   },
                   "id": 13,
                   "nodeType": "EmitStatement",
-                  "src": "181:29:0"
+                  "src": "183:29:0"
                 }
               ]
             },
@@ -387,47 +387,47 @@
                   "name": "distance",
                   "nodeType": "VariableDeclaration",
                   "scope": 15,
-                  "src": "148:15:0",
+                  "src": "149:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_int256",
-                    "typeString": "int256"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   },
                   "typeName": {
                     "id": 6,
-                    "name": "int256",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "148:6:0",
+                    "src": "149:7:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_int256",
-                      "typeString": "int256"
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     }
                   },
                   "value": null,
                   "visibility": "internal"
                 }
               ],
-              "src": "147:17:0"
+              "src": "148:18:0"
             },
             "returnParameters": {
               "id": 9,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "172:0:0"
+              "src": "174:0:0"
             },
             "scope": 16,
-            "src": "122:111:0",
+            "src": "123:112:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17,
-        "src": "27:209:0"
+        "src": "27:211:0"
       }
     ],
-    "src": "0:238:0"
+    "src": "0:240:0"
   },
   "compiler": {
     "name": "solc",
@@ -448,15 +448,28 @@
           "name": "DistanceHHSLog",
           "type": "event",
           "signature": "0x93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092"
+        },
+        "0x3fc9c413ae187dd1ef39f09e5c228240f43666938ce9159467d8545c0099effa": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "distance",
+              "type": "uint256"
+            }
+          ],
+          "name": "DistanceHHSLog",
+          "type": "event",
+          "signature": "0x3fc9c413ae187dd1ef39f09e5c228240f43666938ce9159467d8545c0099effa"
         }
       },
       "links": {},
-      "address": "0xbff3636BB69D055D42ab0586ACA9b9AAC4d20BA8",
-      "transactionHash": "0x1e197990224aec413c7d0f21022beb2f9cc71d3f1c2b8c686c7ffed686b19d1c"
+      "address": "0xe4aADA3Af88e17C304305371D50f0Dac4382b4bb",
+      "transactionHash": "0x334ebaa1cc2da04a7b7ee633bae2a04e8e07ccf1a5d4ac160e6ac140279079c8"
     }
   },
   "schemaVersion": "3.0.14",
-  "updatedAt": "2019-09-03T12:00:10.541Z",
+  "updatedAt": "2019-09-03T12:53:38.957Z",
   "devdoc": {
     "methods": {}
   },

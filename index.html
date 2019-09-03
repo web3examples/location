@@ -56,14 +56,12 @@
         var basemap = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Gerard Persoon'}); // load OpenStreetMap basemap
         basemap.addTo(map);
 
-        const lathhs=52.0672
-        const lonhhs=4.3245
-        var latx4=0; 
-        var lonx4=0;
+        const lathhs=52.0672;  // https://www.google.com/maps/search/?api=1&query=52.0672,4.3245
+        const lonhhs=4.3245;
         var dist=-1;
         var accounts=[];
                      
-        DistanceHHSABI=[{"constant": false,"inputs": [{"name": "distance","type": "int256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
+        DistanceHHSABI=[{"constant": false,"inputs": [{"name": "distance","type": "uint256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
              
         async function SaveOnBlockchain() {
             if (dist <  0) { log("No location yet");return;}  
@@ -72,7 +70,7 @@
             log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
             const DistanceHHSContract   = new web3.eth.Contract(DistanceHHSABI, DistanceHHSaddress );
             
-            log(`Storing distance to HHS: lat=${dist} (hex:${web3.utils.toHex(dist)}) `);
+            log(`Storing distance to HHS: distance=${dist} (hex:${web3.utils.toHex(dist)}) `);
             x=await DistanceHHSContract.methods.StoreDistanceHHS(dist).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
             log(`Transaction hash: ${EtherscanLink("tx",x.transactionHash)}`);
         }

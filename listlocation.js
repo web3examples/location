@@ -2,13 +2,8 @@ const Web3 = require('web3');
 var namehash = require('eth-ens-namehash')
 const web3 = new Web3(Web3.givenProvider || "wss://ropsten.infura.io/ws/v3/40548c5748a04570b1859a7bd8f9e615" );
 
-// https://manager.ens.domains/name/proofoflocation.eth
-//https://ropsten.etherscan.io/address/0x388ac14153b28Ad761990E4c95187bE3D7d1652C
-
-
 // https://manager.ens.domains/name/distancehhs.eth
-
-//https://ropsten.etherscan.io/address/0xbff3636BB69D055D42ab0586ACA9b9AAC4d20BA8
+// https://ropsten.etherscan.io/address/0xe4aADA3Af88e17C304305371D50f0Dac4382b4bb
 
 web3.transactionConfirmationBlocks = 1; // default 24 // probably doesn't work anymore
 
@@ -31,38 +26,38 @@ const sleep = require('util').promisify(setTimeout);
 
 // https://www.geodatasource.com/developers/javascript
 function distance(lat1, lon1, lat2, lon2) {
-	if ((lat1 == lat2) && (lon1 == lon2)) {
-		return 0;
-	}
-	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-		dist = dist * 1.609344  // kilometers
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+        return 0;
+    }
+    else {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+            dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        dist = dist * 1.609344  // kilometers
         
         dist = Math.round(dist * 1000) // meters
-		return dist;
-	}
+        return dist;
+    }
 }
 
 
 async function processevent(object)
 {     
      var ts=0
-     var decoded=web3.eth.abi.decodeParameters(['uint256', 'uint256', 'uint256'], object.data);    
+     var decoded=web3.eth.abi.decodeParameters(['uint256'], object.data);    
      console.log("Found block with transaction %s",object.blockNumber);
      
      var txHash=object.transactionHash;     
      const trx = await web3.eth.getTransaction(txHash);
-     console.log(trx.from);
+     var from = trx.from;
      
      for (i = 0; i < 5; i++) {
         blockobject= await web3.eth.getBlock(object.blockNumber);  
@@ -73,13 +68,8 @@ async function processevent(object)
      if (blockobject)
         ts = new Date(blockobject.timestamp * 1000); // javascript uses milliseconds     
         
-     var from=web3.utils.numberToHex(decoded['0']);
-     var lat=web3.utils.numberToHex(decoded['1']) /10000;
-     var lon=web3.utils.numberToHex(decoded['2']) /10000;
-     console.log("%s From %s (%s) [%s]: https://www.google.com/maps/search/?api=1&query=%s,%s d=%s",ts,from,await ensReverse(from),trx.from,lat,lon,distance(52.0672,4.3245,lat,lon));
-     
-     // https://www.google.com/maps/search/?api=1&query=52.0672,4.3245 middle hh
-     
+     var dist=decoded['0'];
+     console.log("%s From %s d=%s meters",ts,from,await ensReverse(from),dist);     
 }
 
 var subscription;
