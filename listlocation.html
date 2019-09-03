@@ -79,14 +79,19 @@ async function processevent(object)
 
 log('From (address), From (name), Date-time, Distance (meters)');
 log(web3.version);
-var subscription;
-web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
+
+
+async function f() {
+    address = await web3.eth.ens.getAddress('distancehhs.eth')
     log(`Found contract address: ${address}`);
-    subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
+    
+    var subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
-    .on("changed", log)
-    .on("error",log)
-}).catch(log);
+    .on("changed", console.log)
+    .on("error",console.log)
+}
+
+f();
 
         </script>        
     </body>
