@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="leaflet/leaflet.css" />
+        <script src="leaflet/leaflet.js"></script>       
+        <script src="web3-browserify.js"></script>
+    </head>
+
+    <body>
+        <h1>Proof of location on ethereum blockchain</h1>   
+        
+        <button onclick="SaveLocation()">Press here to determine location</button><br>  <!-- needs user interaction for geolocation to work -->      
+        <div id="map" style="width:100%;height:200px" ></div> 
+        <pre id="log" style="width:100%;height:200px"></pre>
+        <script type="text/javascript">
+        function log(str,...arguments) {        
+            var logstr=arguments.toString();
+            document.getElementById("log").innerHTML +=str+" "+logstr+"\n";
+        }        
+        if (location.protocol != 'https:') // make sure we are on https, otherwise geolocation doesn't work        
+            location.href = 'https:' + window.location.href.substring(window.location.protocol.length);        
+        var map = L.map('map');
+        var basemap = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Gerard Persoon'}); // load OpenStreetMap basemap
+        basemap.addTo(map);
+               
+                
+        async function SaveLocation(){    
+            const location = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(  (x) => resolve(x)  ) );
+            log(`Coordinates: ${location.coords.latitude}, ${location.coords.longitude}`);            
+            var url=`https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?lat=${location.coords.latitude}&lon=${location.coords.longitude}`;
+            var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);        
+            map.setView(latlng, 15)            
+            var marker = L.marker(latlng).addTo(map);
+            var response = await fetch (url);
+            response = await response.json();
+            log(`Physical location: ${response.response.docs[0].weergavenaam}`);        
+       }
+             
+        async function asyncloaded() {
+            if (typeof ethereum !== 'undefined')
+                await ethereum.enable().catch( (reason) => log('User rejected provider access',reason.message.substring(0,50)) )
+            if (!Web3.givenProvider) { // Checking if web3 is accessible
+                log("Web3 interface is not found. "+
+                "Please install <a href='https://metamask.io'>Metamask</a>"+
+                " or use <a href='https://www.opera.com/crypto'>Opera Crypto (android)");
+                return; // stop this function
+            }
+            const web3 = new Web3(Web3.givenProvider); // switch to version 1.0 when using metamask; provide web3 functions for Opera
+            //typeof web3 === 'undefined' || web3 == 'undefined'
+            log(`web3 is present: ${web3.version}`); // note: use ` (back quote)
+            const network = await web3.eth.net.getId().catch( (reason) => log(`Cannnot find network ${reason}`) );
+            if (typeof network === 'undefined' || network != 3) 
+                { log("Please select Ropsten test network");return;}
+            log("Ethereum network: Ropsten")
+            var accounts=await web3.eth.getAccounts();            
+            log(`Ethereum address: ${accounts[0]}`);
+       }
+       window.addEventListener('load', asyncloaded);       
+        </script>        
+    </body>
+</html>
+
+
+
+
+    
+    

@@ -1,0 +1,6 @@
+Open Google Chrome on your device.
+Press Alt + Shift + I to access Developer Tools.
+Select the three dot menu icon in the top right of the pane.
+Scroll to “More Tools” and select “Sensors.”
+Change Geolocation to “Custom location…”
+Choose the Lat and Long coordinates 

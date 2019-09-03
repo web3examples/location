@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <link rel="stylesheet" href="leaflet/leaflet.css" />
+        <script src="leaflet/leaflet.js"></script>       
+    </head>
+
+    <body>
+        <button onclick="SaveLocation()">Get my location</button><br>        
+        <div id="map" style="width:400px;height:300px" ></div>
+        <p id="location"></p>
+        <script type="text/javascript">
+        
+     function SaveLocation(){         
+        navigator.geolocation.getCurrentPosition(function(location) {        
+            var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);        
+            var map = L.map('map').setView(latlng, 13)            
+            var basemap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Test'}); // load OpenStreetMap basemap
+            basemap.addTo(map);
+            var marker = L.marker(latlng).addTo(map);
+            document.getElementById("location").innerHTML = "Latitude: " + location.coords.latitude + "<br>Longitude: " + location.coords.longitude;
+        });            
+       }
+        </script>        
+    </body>
+</html>
+
+
+
+
+    
