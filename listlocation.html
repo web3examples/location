@@ -78,10 +78,10 @@ async function processevent(object)
 
 
 log('From (address), From (name), Date-time, Distance (meters)');
-
+log(web3);
 var subscription;
 web3.eth.ens.getAddress('distancehhs.eth').then((address) => {
-    //console.log("Found contract address: %s",address);
+    console.log(`Found contract address: ${address}`);
     subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
     .on("changed", console.log)
