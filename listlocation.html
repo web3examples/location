@@ -83,7 +83,7 @@ log('From (address), From (name), Date-time, Distance (meters)');
 
 async function f() {
     address = await web3.eth.ens.getAddress('distancehhs.eth')
-    log(`Found contract address: ${address}`);
+    //log(`Found contract address: ${address}`);
     
     var subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
