@@ -121,10 +121,8 @@
                 { log("Please select Ropsten test network");return;}
             log("Ethereum network: Ropsten")
             accounts=await web3.eth.getAccounts();            
-            log(`Ethereum address: ${EtherscanLink("address",)}`);
-                        
-            log(`http://web3examples.com/location/listlocation.html?address=${accounts[0]}`);
-            
+            log(`Ethereum address: ${EtherscanLink("address",accounts[0])}`);
+            log(`<a href="http://web3examples.com/location/listlocation.html?address=${accounts[0]}" target="_blank" >See checkins of address ${accounts[0]}</a>`;  
             
        }
        window.addEventListener('load', asyncloaded);       
