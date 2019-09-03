@@ -1,0 +1,466 @@
+{
+  "contractName": "DistanceHHS",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "distance",
+          "type": "int256"
+        }
+      ],
+      "name": "DistanceHHSLog",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "distance",
+          "type": "int256"
+        }
+      ],
+      "name": "StoreDistanceHHS",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"distance\",\"type\":\"int256\"}],\"name\":\"StoreDistanceHHS\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"distance\",\"type\":\"int256\"}],\"name\":\"DistanceHHSLog\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol\":\"DistanceHHS\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol\":{\"keccak256\":\"0x1186be3baf0b4bd8117257ca4aaa5a12c5de0cc7d4b5b0bdf8f3e639ce2d381d\",\"urls\":[\"bzzr://cb0977ec682075a4cb04a5a7f8d9bfbb54c574d15af6ec87e5fedf5e26e3480f\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060be8061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063c4a896cd14602d575b600080fd5b605660048036036020811015604157600080fd5b81019080803590602001909291905050506058565b005b7f93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092816040518082815260200191505060405180910390a15056fea165627a7a723058203dcc13a22c13b1a65713bf2500e07d38690554476c1fa4f14d5c7047e12e3fdb0029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063c4a896cd14602d575b600080fd5b605660048036036020811015604157600080fd5b81019080803590602001909291905050506058565b005b7f93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092816040518082815260200191505060405180910390a15056fea165627a7a723058203dcc13a22c13b1a65713bf2500e07d38690554476c1fa4f14d5c7047e12e3fdb0029",
+  "sourceMap": "27:209:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:209:0;;;;;;;",
+  "deployedSourceMap": "27:209:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:209:0;;;;;;;;;;;;;;;;;;;122:111;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;122:111:0;;;;;;;;;;;;;;;;;:::i;:::-;;;186:24;201:8;186:24;;;;;;;;;;;;;;;;;;122:111;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract DistanceHHS {\r\n   event DistanceHHSLog(int256 distance)  ;   // declaring event  \r\n   function StoreDistanceHHS(int256 distance) public {\r\n      emit DistanceHHSLog(distance);// logging event\r\n   }\r\n}\r\n",
+  "sourcePath": "C:/blockchain_test/location/truffle/contracts/DistanceHHS.sol",
+  "ast": {
+    "absolutePath": "/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol",
+    "exportedSymbols": {
+      "DistanceHHS": [
+        16
+      ]
+    },
+    "id": 17,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 16,
+        "linearizedBaseContracts": [
+          16
+        ],
+        "name": "DistanceHHS",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 5,
+            "name": "DistanceHHSLog",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 4,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3,
+                  "indexed": false,
+                  "name": "distance",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5,
+                  "src": "75:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 2,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "75:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "74:17:0"
+            },
+            "src": "54:40:0"
+          },
+          {
+            "body": {
+              "id": 14,
+              "nodeType": "Block",
+              "src": "172:61:0",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11,
+                        "name": "distance",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7,
+                        "src": "201:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      ],
+                      "id": 10,
+                      "name": "DistanceHHSLog",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5,
+                      "src": "186:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_int256_$returns$__$",
+                        "typeString": "function (int256)"
+                      }
+                    },
+                    "id": 12,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "186:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 13,
+                  "nodeType": "EmitStatement",
+                  "src": "181:29:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 15,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "StoreDistanceHHS",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7,
+                  "name": "distance",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15,
+                  "src": "148:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 6,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "148:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "147:17:0"
+            },
+            "returnParameters": {
+              "id": 9,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "172:0:0"
+            },
+            "scope": 16,
+            "src": "122:111:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 17,
+        "src": "27:209:0"
+      }
+    ],
+    "src": "0:238:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/blockchain_test/location/truffle/contracts/DistanceHHS.sol",
+    "exportedSymbols": {
+      "DistanceHHS": [
+        16
+      ]
+    },
+    "id": 17,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 16,
+        "linearizedBaseContracts": [
+          16
+        ],
+        "name": "DistanceHHS",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 5,
+            "name": "DistanceHHSLog",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 4,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3,
+                  "indexed": false,
+                  "name": "distance",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5,
+                  "src": "75:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 2,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "75:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "74:17:0"
+            },
+            "src": "54:40:0"
+          },
+          {
+            "body": {
+              "id": 14,
+              "nodeType": "Block",
+              "src": "172:61:0",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11,
+                        "name": "distance",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7,
+                        "src": "201:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      ],
+                      "id": 10,
+                      "name": "DistanceHHSLog",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5,
+                      "src": "186:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_int256_$returns$__$",
+                        "typeString": "function (int256)"
+                      }
+                    },
+                    "id": 12,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "186:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 13,
+                  "nodeType": "EmitStatement",
+                  "src": "181:29:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 15,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "StoreDistanceHHS",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7,
+                  "name": "distance",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 15,
+                  "src": "148:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 6,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "148:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "147:17:0"
+            },
+            "returnParameters": {
+              "id": 9,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "172:0:0"
+            },
+            "scope": 16,
+            "src": "122:111:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 17,
+        "src": "27:209:0"
+      }
+    ],
+    "src": "0:238:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {
+    "3": {
+      "events": {
+        "0x93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "distance",
+              "type": "int256"
+            }
+          ],
+          "name": "DistanceHHSLog",
+          "type": "event",
+          "signature": "0x93f6f984976022368ed0b9ae0613191c23b50c1aa33e79e5bbd4cebddadbe092"
+        }
+      },
+      "links": {},
+      "address": "0xbff3636BB69D055D42ab0586ACA9b9AAC4d20BA8",
+      "transactionHash": "0x1e197990224aec413c7d0f21022beb2f9cc71d3f1c2b8c686c7ffed686b19d1c"
+    }
+  },
+  "schemaVersion": "3.0.14",
+  "updatedAt": "2019-09-03T12:00:10.541Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -24,6 +24,31 @@
         function EtherscanLink(pref,link) {
            return '<a href="https://ropsten.etherscan.io/'+pref+"/"+link+'" target="_blank" >'+link+'</a>';           
         }
+        
+        // https://www.geodatasource.com/developers/javascript
+        function distance(lat1, lon1, lat2, lon2) {
+            if ((lat1 == lat2) && (lon1 == lon2)) {
+                return 0;
+            }
+            else {
+                var radlat1 = Math.PI * lat1/180;
+                var radlat2 = Math.PI * lat2/180;
+                var theta = lon1-lon2;
+                var radtheta = Math.PI * theta/180;
+                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                if (dist > 1) {
+                    dist = 1;
+                }
+                dist = Math.acos(dist);
+                dist = dist * 180/Math.PI;
+                dist = dist * 60 * 1.1515;
+                dist = dist * 1.609344  // kilometers
+                
+                dist = Math.round(dist * 1000) // meters
+                return dist;
+            }
+        }
+        
          
         if (location.protocol != 'https:') // make sure we are on https, otherwise geolocation doesn't work        
             location.href = 'https:' + window.location.href.substring(window.location.protocol.length);        
@@ -31,20 +56,24 @@
         var basemap = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Gerard Persoon'}); // load OpenStreetMap basemap
         basemap.addTo(map);
 
-var latx4=0; 
-var lonx4=0;     
-var accounts=[];
-             
-        ProofOfLocationABI=[{"constant": false,"inputs": [{"name": "lat","type": "int256"},{"name": "lon","type": "int256"}],"name": "StoreProofOfLocation","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
+        const lathhs=52.0672
+        const lonhhs=4.3245
+        var latx4=0; 
+        var lonx4=0;
+        var dist=-1;
+        var accounts=[];
+                     
+        ProofOfLocationABI=[{"constant": false,"inputs": [{"name": "distance","type": "int256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
              
         async function SaveOnBlockchain() {
-            if (latx4 == 0 || lonx4 == 0) { log("No location yet");return;}  
+            if (dist <  0) { log("No location yet");return;}  
             if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}                          
-            ProofOfLocationaddress = await web3.eth.ens.getAddress('proofoflocation.eth')
-            log(`Contract is ${EtherscanLink("address",ProofOfLocationaddress)}`);  
-            const ProofOfLocationContract   = new web3.eth.Contract(ProofOfLocationABI, ProofOfLocationaddress );            
-            log(`Storing location: lat=${latx4} (hex:${web3.utils.toHex(latx4)}) lon=${lonx4} (hex=${web3.utils.toHex(lonx4)})`);
-            x=await ProofOfLocationContract.methods.StoreProofOfLocation(latx4,lonx4).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
+            DistanceHHSaddress = await web3.eth.ens.getAddress('distancehhs.eth')
+            log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
+            const ProofOfLocationContract   = new web3.eth.Contract(ProofOfLocationABI, DistanceHHSaddress );
+            
+            log(`Storing distance to HHS: lat=${dist} (hex:${web3.utils.toHex(dist)}) `);
+            x=await ProofOfLocationContract.methods.StoreProofOfLocation(dist).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
             log(`Transaction hash: ${EtherscanLink("tx",x.transactionHash)}`);
         }
              
@@ -58,10 +87,9 @@ var accounts=[];
             
             if (!navigator.geolocation) { log('Geolocation not supported');return;}
             const location = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(  (x) => resolve(x), (y) => reject(y.message)) ).catch ( (reason) => log(`Geolocation error: ${reason}`) );
-            if (!location) return; 
-            log(`Coordinates: lat=${location.coords.latitude}, lon=${location.coords.longitude}`);                     
-            latx4 = Math.round(location.coords.latitude *10000);
-            lonx4 = Math.round(location.coords.longitude *10000);
+            if (!location) return;             
+            dist=distance(lathhs,lonhhs,location.coords.latitude,location.coords.longitude);
+            log(`Coordinates: lat=${location.coords.latitude}, lon=${location.coords.longitude} Distance to HHS=${dist}`);                                 
             var url=`https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?lat=${location.coords.latitude}&lon=${location.coords.longitude}`;
             var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);        
             map.setView(latlng, 15)            

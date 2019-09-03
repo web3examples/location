@@ -1,0 +1,782 @@
+{
+  "contractName": "ProofOfLocation",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "adr",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "lat",
+          "type": "int256"
+        },
+        {
+          "indexed": false,
+          "name": "lon",
+          "type": "int256"
+        }
+      ],
+      "name": "ProofOfLocationLog",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "lat",
+          "type": "int256"
+        },
+        {
+          "name": "lon",
+          "type": "int256"
+        }
+      ],
+      "name": "StoreProofOfLocation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"lat\",\"type\":\"int256\"},{\"name\":\"lon\",\"type\":\"int256\"}],\"name\":\"StoreProofOfLocation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"adr\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"lat\",\"type\":\"int256\"},{\"indexed\":false,\"name\":\"lon\",\"type\":\"int256\"}],\"name\":\"ProofOfLocationLog\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/blockchain_test/location/truffle/contracts/ProofOfLocation.sol\":\"ProofOfLocation\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/blockchain_test/location/truffle/contracts/ProofOfLocation.sol\":{\"keccak256\":\"0xb08ca696125eddc766057918246b4d2bae8392785518745d6fc24472c3d07471\",\"urls\":[\"bzzr://c910235257e9bdffb15848cc4349715fe1d24261fb83258e0f9061b94802702e\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b506101058061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063e9d223a714602d575b600080fd5b606060048036036040811015604157600080fd5b8101908080359060200190929190803590602001909291905050506062565b005b7fa5ab81f7416be77d27eb1624da51af352b31826c234020eef95920879b527ccd338383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001838152602001828152602001935050505060405180910390a1505056fea165627a7a7230582050a7aa8175b2c96b0ddf3547c4c18bd442b07bb793f5db6012c704f8521e3f1e0029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063e9d223a714602d575b600080fd5b606060048036036040811015604157600080fd5b8101908080359060200190929190803590602001909291905050506062565b005b7fa5ab81f7416be77d27eb1624da51af352b31826c234020eef95920879b527ccd338383604051808473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001838152602001828152602001935050505060405180910390a1505056fea165627a7a7230582050a7aa8175b2c96b0ddf3547c4c18bd442b07bb793f5db6012c704f8521e3f1e0029",
+  "sourceMap": "27:262:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:262:1;;;;;;;",
+  "deployedSourceMap": "27:262:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:262:1;;;;;;;;;;;;;;;;;;;150:136;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;150:136:1;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;225:38;244:10;255:3;259;225:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;150:136;;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract ProofOfLocation {\r\n   event ProofOfLocationLog(address adr, int256 lat, int256 lon)  ;   // declaring event  \r\n   function StoreProofOfLocation(int256 lat, int256 lon) public {\r\n      emit ProofOfLocationLog(msg.sender,lat,lon);// logging event\r\n   }\r\n}\r\n",
+  "sourcePath": "C:/blockchain_test/location/truffle/contracts/ProofOfLocation.sol",
+  "ast": {
+    "absolutePath": "/C/blockchain_test/location/truffle/contracts/ProofOfLocation.sol",
+    "exportedSymbols": {
+      "ProofOfLocation": [
+        82
+      ]
+    },
+    "id": 83,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 82,
+        "linearizedBaseContracts": [
+          82
+        ],
+        "name": "ProofOfLocation",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 66,
+            "name": "ProofOfLocationLog",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 65,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60,
+                  "indexed": false,
+                  "name": "adr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66,
+                  "src": "83:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 59,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "83:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 62,
+                  "indexed": false,
+                  "name": "lat",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66,
+                  "src": "96:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 61,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "96:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 64,
+                  "indexed": false,
+                  "name": "lon",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66,
+                  "src": "108:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 63,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "108:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "82:37:1"
+            },
+            "src": "58:64:1"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "211:75:1",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 74,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 97,
+                          "src": "244:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 75,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "244:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 76,
+                        "name": "lat",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 68,
+                        "src": "255:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 77,
+                        "name": "lon",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 70,
+                        "src": "259:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        },
+                        {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      ],
+                      "id": 73,
+                      "name": "ProofOfLocationLog",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 66,
+                      "src": "225:18:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_int256_$_t_int256_$returns$__$",
+                        "typeString": "function (address,int256,int256)"
+                      }
+                    },
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "225:38:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 79,
+                  "nodeType": "EmitStatement",
+                  "src": "220:43:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 81,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "StoreProofOfLocation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 71,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 68,
+                  "name": "lat",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "180:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 67,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "180:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 70,
+                  "name": "lon",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "192:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 69,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "192:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "179:24:1"
+            },
+            "returnParameters": {
+              "id": 72,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "211:0:1"
+            },
+            "scope": 82,
+            "src": "150:136:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 83,
+        "src": "27:262:1"
+      }
+    ],
+    "src": "0:291:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/blockchain_test/location/truffle/contracts/ProofOfLocation.sol",
+    "exportedSymbols": {
+      "ProofOfLocation": [
+        82
+      ]
+    },
+    "id": 83,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 82,
+        "linearizedBaseContracts": [
+          82
+        ],
+        "name": "ProofOfLocation",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 66,
+            "name": "ProofOfLocationLog",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 65,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 60,
+                  "indexed": false,
+                  "name": "adr",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66,
+                  "src": "83:11:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 59,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "83:7:1",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 62,
+                  "indexed": false,
+                  "name": "lat",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66,
+                  "src": "96:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 61,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "96:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 64,
+                  "indexed": false,
+                  "name": "lon",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 66,
+                  "src": "108:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 63,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "108:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "82:37:1"
+            },
+            "src": "58:64:1"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "211:75:1",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 74,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 97,
+                          "src": "244:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 75,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "244:10:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 76,
+                        "name": "lat",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 68,
+                        "src": "255:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 77,
+                        "name": "lon",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 70,
+                        "src": "259:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        },
+                        {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      ],
+                      "id": 73,
+                      "name": "ProofOfLocationLog",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 66,
+                      "src": "225:18:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_int256_$_t_int256_$returns$__$",
+                        "typeString": "function (address,int256,int256)"
+                      }
+                    },
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "225:38:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 79,
+                  "nodeType": "EmitStatement",
+                  "src": "220:43:1"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 81,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "StoreProofOfLocation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 71,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 68,
+                  "name": "lat",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "180:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 67,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "180:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 70,
+                  "name": "lon",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "192:10:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 69,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "192:6:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "179:24:1"
+            },
+            "returnParameters": {
+              "id": 72,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "211:0:1"
+            },
+            "scope": 82,
+            "src": "150:136:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 83,
+        "src": "27:262:1"
+      }
+    ],
+    "src": "0:291:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {
+    "3": {
+      "events": {
+        "0xa5ab81f7416be77d27eb1624da51af352b31826c234020eef95920879b527ccd": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "adr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "lat",
+              "type": "int256"
+            },
+            {
+              "indexed": false,
+              "name": "lon",
+              "type": "int256"
+            }
+          ],
+          "name": "ProofOfLocationLog",
+          "type": "event",
+          "signature": "0xa5ab81f7416be77d27eb1624da51af352b31826c234020eef95920879b527ccd"
+        }
+      },
+      "links": {},
+      "address": "0x093Eb46E0924BA517f5021b7b7289B3B66AFb3d8",
+      "transactionHash": "0x5d73eff965890c6021f5973159a746a56f130f9211380914f6db3ebcf46ec30a"
+    },
+    "5777": {
+      "events": {
+        "0xa5ab81f7416be77d27eb1624da51af352b31826c234020eef95920879b527ccd": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "adr",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "lat",
+              "type": "int256"
+            },
+            {
+              "indexed": false,
+              "name": "lon",
+              "type": "int256"
+            }
+          ],
+          "name": "ProofOfLocationLog",
+          "type": "event",
+          "signature": "0xa5ab81f7416be77d27eb1624da51af352b31826c234020eef95920879b527ccd"
+        }
+      },
+      "links": {},
+      "address": "0xB39E5122f9Ea033485fE288C7Cd66A0576864Eea",
+      "transactionHash": "0x4ccc216017769339cf186afb766eef5b0c1752fc8cc417f1f5199eac24ae1ad0"
+    }
+  },
+  "schemaVersion": "3.0.14",
+  "updatedAt": "2019-09-03T09:39:31.238Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

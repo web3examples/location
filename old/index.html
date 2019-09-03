@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="leaflet/leaflet.css" />
         <script src="leaflet/leaflet.js"></script>       
-        <script src="web3-browserify.js"></script>
+        <script src="../ethereum/web3js/web3-browserify.js"> /* Add web1.0 for ens support and isAddress; use web 0.2 (metamask) for the transactions */ </script>
     </head>
 
     <body>
@@ -13,22 +13,55 @@
         
         <button onclick="SaveLocation()">Press here to determine location</button><br>  <!-- needs user interaction for geolocation to work -->      
         <div id="map" style="width:100%;height:200px" ></div> 
+        <button onclick="SaveOnBlockchain()">Press here to save on blockchain</button><br>  <!-- needs user interaction for geolocation to work -->      
         <pre id="log" style="width:100%;height:200px"></pre>
         <script type="text/javascript">
         function log(str,...arguments) {        
             var logstr=arguments.toString();
             document.getElementById("log").innerHTML +=str+" "+logstr+"\n";
         }        
+        
+        function EtherscanLink(pref,link) {
+           return '<a href="https://ropsten.etherscan.io/'+pref+"/"+link+'" target="_blank" >'+link+'</a>';           
+        }
+         
         if (location.protocol != 'https:') // make sure we are on https, otherwise geolocation doesn't work        
             location.href = 'https:' + window.location.href.substring(window.location.protocol.length);        
         var map = L.map('map');
         var basemap = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Gerard Persoon'}); // load OpenStreetMap basemap
         basemap.addTo(map);
-               
-                
+
+var latx4=0; 
+var lonx4=0;     
+var accounts=[];
+             
+        ProofOfLocationABI=[{"constant": false,"inputs": [{"name": "lat","type": "int256"},{"name": "lon","type": "int256"}],"name": "StoreProofOfLocation","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
+             
+        async function SaveOnBlockchain() {
+            if (latx4 == 0 || lonx4 == 0) { log("No location yet");return;}  
+            if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}                          
+            ProofOfLocationaddress = await web3.eth.ens.getAddress('proofoflocation.eth')
+            log(`Contract is ${EtherscanLink("address",ProofOfLocationaddress)}`);  
+            const ProofOfLocationContract   = new web3.eth.Contract(ProofOfLocationABI, ProofOfLocationaddress );            
+            log(`Storing location: lat=${latx4} (hex:${web3.utils.toHex(latx4)}) lon=${lonx4} (hex=${web3.utils.toHex(lonx4)})`);
+            x=await ProofOfLocationContract.methods.StoreProofOfLocation(latx4,lonx4).send({from: accounts[0]}).catch( (reason) => log(`Cannnot do transaction ${reason}`) );;                        
+            log(`Transaction hash: ${EtherscanLink("tx",x.transactionHash)}`);
+        }
+             
         async function SaveLocation(){    
-            const location = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(  (x) => resolve(x)  ) );
-            log(`Coordinates: ${location.coords.latitude}, ${location.coords.longitude}`);            
+            log("Trying to get location");
+            if (navigator.permissions) {
+                var status=await navigator.permissions.query({name:'geolocation'});
+                log (`Permission ${status.state}`);
+                console.log(status.state);
+            }
+            
+            if (!navigator.geolocation) { log('Geolocation not supported');return;}
+            const location = await new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(  (x) => resolve(x), (y) => reject(y.message)) ).catch ( (reason) => log(`Geolocation error: ${reason}`) );
+            if (!location) return; 
+            log(`Coordinates: lat=${location.coords.latitude}, lon=${location.coords.longitude}`);                     
+            latx4 = Math.round(location.coords.latitude *10000);
+            lonx4 = Math.round(location.coords.longitude *10000);
             var url=`https://geodata.nationaalgeoregister.nl/locatieserver/revgeo?lat=${location.coords.latitude}&lon=${location.coords.longitude}`;
             var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);        
             map.setView(latlng, 15)            
@@ -39,6 +72,8 @@
        }
              
         async function asyncloaded() {
+        console.log(ethereum)
+        console.log(typeof ethereum)
             if (typeof ethereum !== 'undefined')
                 await ethereum.enable().catch( (reason) => log('User rejected provider access',reason.message.substring(0,50)) )
             if (!Web3.givenProvider) { // Checking if web3 is accessible
@@ -47,15 +82,16 @@
                 " or use <a href='https://www.opera.com/crypto'>Opera Crypto (android)");
                 return; // stop this function
             }
-            const web3 = new Web3(Web3.givenProvider); // switch to version 1.0 when using metamask; provide web3 functions for Opera
+            web3 = new Web3(Web3.givenProvider); // switch to version 1.0 when using metamask; provide web3 functions for Opera
             //typeof web3 === 'undefined' || web3 == 'undefined'
             log(`web3 is present: ${web3.version}`); // note: use ` (back quote)
             const network = await web3.eth.net.getId().catch( (reason) => log(`Cannnot find network ${reason}`) );
             if (typeof network === 'undefined' || network != 3) 
                 { log("Please select Ropsten test network");return;}
             log("Ethereum network: Ropsten")
-            var accounts=await web3.eth.getAccounts();            
-            log(`Ethereum address: ${accounts[0]}`);
+            accounts=await web3.eth.getAccounts();            
+            log(`Ethereum address: ${EtherscanLink("address",accounts[0])}`);
+            web3.transactionConfirmationBlocks = 1; // default 24
        }
        window.addEventListener('load', asyncloaded);       
         </script>        
@@ -65,5 +101,6 @@
 
 
 
+    
     
     
