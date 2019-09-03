@@ -20,8 +20,8 @@
         }  
  
 var url = new URL(window.location.href);
-var c = url.searchParams.get("address");
-log(c);
+var matchaddress = url.searchParams.get("address");
+log(matchaddress);
  
 
 
@@ -86,6 +86,9 @@ async function processevent(object)
      var txHash=object.transactionHash;     
      const trx = await web3.eth.getTransaction(txHash);
      var from = trx.from;
+     
+     if (matchaddress && matchaddress != from)
+            return; // only show requested address
      
      for (i = 0; i < 5; i++) {
         blockobject= await web3.eth.getBlock(object.blockNumber);  
