@@ -87,7 +87,7 @@ async function processevent(object)
      const trx = await web3.eth.getTransaction(txHash);
      var from = trx.from;
      
-     if (matchaddress && matchaddress != from)
+     if (matchaddress && matchaddress.toLowerCase() != from.toLowerCase())
             return; // only show requested address
      
      for (i = 0; i < 5; i++) {
