@@ -19,6 +19,12 @@
             document.getElementById("log").innerHTML +=str+" "+logstr+"\n";
         }  
  
+var url = new URL(window.location.href);
+var c = url.searchParams.get("address");
+log(c);
+ 
+
+
  
 const web3 = new Web3(Web3.givenProvider || "wss://ropsten.infura.io/ws/v3/40548c5748a04570b1859a7bd8f9e615" );
 
@@ -88,7 +94,7 @@ async function processevent(object)
         }
      } 
      if (blockobject)
-        ts = new Date(blockobject.timestamp * 1000).toISOString(); // javascript uses milliseconds     
+        ts = new Date(blockobject.timestamp * 1000).toString(); // javascript uses milliseconds     
         
      var dist=decoded['0'];
      var ensfrom=await ensReverse(from)
