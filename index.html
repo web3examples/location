@@ -119,7 +119,7 @@
                 " or use <a href='https://www.opera.com/crypto'>Opera Crypto (android)");
                 return; // stop this function
             }
-            web3 = new Web3(Web3.givenProvider); // switch to version 1.0 when using metamask; provide web3 functions for Opera
+            web3 = new Web3(Web3.givenProvider || ethereum); // switch to version 1.0 when using metamask; provide web3 functions for Opera
             //typeof web3 === 'undefined' || web3 == 'undefined'
             log(`web3 is present: ${web3.version}`); // note: use ` (back quote)
             const network = await web3.eth.net.getId().catch( (reason) => log(`Cannnot find network ${reason}`) );
