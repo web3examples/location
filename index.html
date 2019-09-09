@@ -6,6 +6,9 @@
         <link rel="stylesheet" href="leaflet/leaflet.css" />
         <script src="leaflet/leaflet.js"></script>       
         <script src="../ethereum/web3js/web3-browserify.js"> /* Add web1.0 for ens support and isAddress; use web 0.2 (metamask) for the transactions */ </script>
+        
+        <script src="https://unpkg.com/@ethvault/iframe-provider-polyfill@0.1.5/dist/index.js" integrity="sha384-qx1eG3ocmrXxXBwEL+qnP7je980Depwy/J7keRHVnqfEFVXHJ0ruzYIsUX767NEH" crossorigin="anonymous"></script>
+        
     </head>
 
     <body>
@@ -50,8 +53,10 @@
         }
         
          
-        if (location.protocol != 'https:') // make sure we are on https, otherwise geolocation doesn't work        
+        if ((location.protocol != 'https:') && (location.href != "http://127.0.0.1/location/"))  { // make sure we are on https, otherwise geolocation doesn't work        
             location.href = 'https:' + window.location.href.substring(window.location.protocol.length);        
+         
+        }    
         var map = L.map('map');
         var basemap = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: 'Gerard Persoon'}); // load OpenStreetMap basemap
         basemap.addTo(map);
