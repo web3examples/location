@@ -48,7 +48,7 @@ Checkin on a location
 
 # Check who has checked in
 
-* [List](*https://web3examples.com/location/listlocation.html)
+* [List](https://web3examples.com/location/listlocation.html)
 
 
 # Internals
