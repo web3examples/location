@@ -3,7 +3,8 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta charset="UTF-8">
-        <script src="../ethereum/web3js/web3-browserify.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script> 
+<script src="https://web3examples.com/ethereum/web3js/web3.min.js"></script>
         <script src="../ethereum/eth-ens-namehash/namehash-browserify.js"> </script>
     </head>
 
@@ -84,6 +85,8 @@ log('From (address), From (name), Date-time, Distance (meters)');
 async function f() {
     address = await web3.eth.ens.getAddress('distancehhs.eth')
     //log(`Found contract address: ${address}`);
+    
+    address="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3"
     
     var subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )

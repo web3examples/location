@@ -6,8 +6,8 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="leaflet/leaflet.css" />
         <script src="leaflet/leaflet.js"></script>       
-        <script src="../ethereum/web3js/web3-browserify.js"> /* Add web1.0 for ens support and isAddress; use web 0.2 (metamask) for the transactions */ </script>
-        
+<script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script> 
+<script src="https://web3examples.com/ethereum/web3js/web3.min.js"></script>
     </head>
 
     <body>
@@ -74,9 +74,15 @@
              
         async function SaveOnBlockchain() {
             if (dist <  0) { log("No location yet");return;}  
-            if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}                          
-            DistanceHHSaddress = await web3.eth.ens.getAddress('distancehhs.eth')
-            log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
+            if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}  
+
+
+            
+    //        DistanceHHSaddress = await web3.eth.ens.getAddress('distancehhs.eth')
+    //        log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
+            
+            DistanceHHSaddress="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3"
+            
             const DistanceHHSContract   = new web3.eth.Contract(DistanceHHSABI, DistanceHHSaddress );
             
             log(`Storing distance to HHS: distance=${dist} (hex:${web3.utils.toHex(dist)}) `);
