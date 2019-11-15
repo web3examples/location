@@ -51,7 +51,7 @@ function sleep(ms) {
 }
 
 async function processevent(object)
-{     
+{     log('proces');
      var ts='';
      var decoded=web3.eth.abi.decodeParameters(['uint256'], object.data);    
      //log(`Found block with transaction ${object.blockNumber}`);
@@ -83,10 +83,10 @@ log('From (address), From (name), Date-time, Distance (meters)');
 
 
 async function f() {
-    address = await web3.eth.ens.getAddress('distancehhs.eth')
+    //address = await web3.eth.ens.getAddress('distancehhs.eth')
     //log(`Found contract address: ${address}`);
     
-    address="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3"
+    address="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3";
     
     var subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
