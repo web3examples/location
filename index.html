@@ -128,8 +128,14 @@
             accounts=await web3.eth.getAccounts();            
             log(`Ethereum address: ${EtherscanLink("address",accounts[0])}`);
             log(`<a href="listlocation.html?address=${accounts[0]}" target="_blank" >See check-ins of address ${accounts[0]}</a>`);  
-            log(`<a href="https://web3examples.com/ethereum/faucet/" target="_blank" >Get test ETH</a>`);       
-            log(`<a href="https://web3examples.com/ethereum/faucet/getnft.html" target="_blank" >Get koios token</a>`);             
+          log('<br>');
+          log(`<a href="https://web3examples.com/ethereum/faucet/" target="_blank" >Get test ETH</a>`);       
+          log('<br>');
+            log(`<a href="https://web3examples.com/ethereum/faucet/getnft.html" target="_blank" >Get koios token</a>`);
+            log('<br>');
+            log(`<a href="https://rinkeby.opensea.io" target="_blank" >Opensea</a>`);              
+
+            
        }
        window.addEventListener('load', asyncloaded);       
         </script>        
