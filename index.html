@@ -24,7 +24,7 @@
         }        
         
         function EtherscanLink(pref,link) {
-           return '<a href="https://ropsten.etherscan.io/'+pref+"/"+link+'" target="_blank" >'+link+'</a>';           
+           return '<a href="https://rinkeby.etherscan.io/'+pref+"/"+link+'" target="_blank" >'+link+'</a>';           
         }
         
         // https://www.geodatasource.com/developers/javascript
@@ -122,13 +122,14 @@
             //typeof web3 === 'undefined' || web3 == 'undefined'
             log(`web3 is present: ${web3.version}`); // note: use ` (back quote)
             const network = await web3.eth.net.getId().catch( (reason) => log(`Cannnot find network ${reason}`) );
-            if (typeof network === 'undefined' || network != 3) 
-                { log("Please select Ropsten test network");return;}
-            log("Ethereum network: Ropsten")
+            if (typeof network === 'undefined' || network != 4) 
+                { log("Please select Rinkeby test network");return;}
+            log("Ethereum network: Rinkeby")
             accounts=await web3.eth.getAccounts();            
             log(`Ethereum address: ${EtherscanLink("address",accounts[0])}`);
             log(`<a href="listlocation.html?address=${accounts[0]}" target="_blank" >See check-ins of address ${accounts[0]}</a>`);  
-            log(`<a href="http://web3examples.com/ethereum/faucet/" target="_blank" >Get test ETH</a>`);          
+            log(`<a href="http://web3examples.com/ethereum/faucet/" target="_blank" >Get test ETH</a>`);       
+            log(`<a href="http://web3examples.com/ethereum/faucet/getnft.html" target="_blank" >Get koios token</a>`);             
        }
        window.addEventListener('load', asyncloaded);       
         </script>        
