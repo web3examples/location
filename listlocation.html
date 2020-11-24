@@ -4,7 +4,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta charset="UTF-8">
         <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script> 
-        <script src="../ethereum/eth-ens-namehash/namehash-browserify.js"> </script>
     </head>
 
     <body>
@@ -12,8 +11,6 @@
         <pre id="log" style="width:100%;height:200px"></pre>
 
  <script type="text/javascript">
- 
- 
     function log(str,...arguments) {        
             var logstr=arguments.toString();
             document.getElementById("log").innerHTML +=str+" "+logstr+"\n";
@@ -22,43 +19,20 @@
 var url = new URL(window.location.href);
 var matchaddress = url.searchParams.get("address");
 if (matchaddress) log(`Only showing address: ${matchaddress}`);
- 
 
-
-// || "wss://ropsten.infura.io/ws/v3/40548c5748a04570b1859a7bd8f9e615"  
 const web3 = new Web3( Web3.givenProvider );
-
-// https://manager.ens.domains/name/distancehhs.eth
-// https://ropsten.etherscan.io/address/0xe4aADA3Af88e17C304305371D50f0Dac4382b4bb
-
-web3.transactionConfirmationBlocks = 1; // default 24 // probably doesn't work anymore
-
-async function ensReverse(Account) {
-    //const DefaultReverseResolver ='0x5fBb459C49BB06083C33109fA4f14810eC2Cf358'; // for mainnet // check via https://manager.ens.domains/name/8e2a89ff2f45ed7f8c8506f846200d671e2f176f.addr.reverse
-    const DefaultReverseResolver ='0x53350F4089B10E516c164497f395Dbbbc8675e20'; // for ropsten
-    const ABI=[{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"type":"function"},] // found via https://etherscan.io/address/0x5fbb459c49bb06083c33109fa4f14810ec2cf358#contracts
-    const ResolverContract = new web3.eth.Contract(ABI, DefaultReverseResolver);
-    var lookup=Account.toLowerCase().substr(2) + '.addr.reverse'
-    var nh=namehash.hash(lookup);
-    //console.log(nh);
-    return await ResolverContract.methods.name(nh).call();    
-}
-
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function processevent(object)
-{     log('proces');
+{     
      var ts='';
      var decoded=web3.eth.abi.decodeParameters(['uint256'], object.data);    
-     //log(`Found block with transaction ${object.blockNumber}`);
-     
      var txHash=object.transactionHash;     
      const trx = await web3.eth.getTransaction(txHash);
      var from = trx.from;
-     
      if (matchaddress && matchaddress.toLowerCase() != from.toLowerCase())
             return; // only show requested address
      
@@ -70,23 +44,14 @@ async function processevent(object)
      } 
      if (blockobject)
         ts = new Date(blockobject.timestamp * 1000).toString(); // javascript uses milliseconds     
-        
      var dist=decoded['0'];
-     var ensfrom=await ensReverse(from)
-     log(`${from},${ensfrom},${ts},${dist}`);     
+     log(`${from},${ts},${dist}`);     
 }
 
-
 log('From (address), From (name), Date-time, Distance (meters)');
-//log(web3.version);
 
-
-async function f() {
-    //address = await web3.eth.ens.getAddress('distancehhs.eth')
-    //log(`Found contract address: ${address}`);
-    
+async function f() {   
     address="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3";
-    
     var subscription= web3.eth.subscribe('logs', {fromBlock: '0x0',address: address} )
     .on("data", processevent )
     .on("changed", console.log)
