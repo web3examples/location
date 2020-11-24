@@ -63,25 +63,12 @@
         const lonhhs=4.3245;
         var dist=-1;
         var accounts=[];
-                     
         DistanceHHSABI=[{"constant": false,"inputs": [{"name": "distance","type": "uint256"}],"name": "StoreDistanceHHS","outputs": [],"payable": false,"stateMutability": "nonpayable","type": "function"}];
-             
-             
-             
-
-             
              
         async function SaveOnBlockchain() {
             if (dist <  0) { log("No location yet");return;}  
             if (accounts.length == 0 || accounts[0].length < 10 ) { log("No ethereum address yet");return;}  
-
-
-            
-    //        DistanceHHSaddress = await web3.eth.ens.getAddress('distancehhs.eth')
-    //        log(`Contract is ${EtherscanLink("address",DistanceHHSaddress)}`);  
-            
-            DistanceHHSaddress="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3"
-            
+            DistanceHHSaddress="0x609F224c0c9405a1e7FD404114ca8A8606edC3a3"            
             const DistanceHHSContract   = new web3.eth.Contract(DistanceHHSABI, DistanceHHSaddress );
             
             log(`Storing distance to HHS: distance=${dist} (hex:${web3.utils.toHex(dist)}) `);
@@ -136,10 +123,6 @@
           log('<br>');
           log(`<a href="https://web3examples.com/ethereum/faucet/" target="_blank" >Get test ETH</a>`);       
           log('<br>');
-           // log(`<a href="https://web3examples.com/ethereum/faucet/getnft.html" target="_blank" >Get koios token</a>`);
-           // log('<br>');
-          //  log(`<a href="https://rinkeby.opensea.io" target="_blank" >Opensea</a>`);              
-
             
        }
        window.addEventListener('load', asyncloaded);       
